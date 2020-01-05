@@ -14,7 +14,16 @@ if [ $result -ne 0 ]
 then
     echo "Creating the cluster"
     # Perhaps increase nodes to 3?
-    gcloud container clusters create flask-vue-kubernetes --num-nodes 1 --machine-type n1-standard-1
+    # Perhaps use bigger machines: f1-micro vs. n1-standard-1
+    #    append the following option
+    #         --machine-type f1-micro
+    #         --machine-type n1-standard-1 # default size?
+    #
+    #gcloud container clusters create flask-vue-kubernetes --num-nodes 3
+    #
+    # --release-channel requires "beta" "rapid" uses kubernetes version 1.16.0-gke.20
+    gcloud beta container clusters create flask-vue-kubernetes --num-nodes 3 --release-channel rapid
+
 else
     echo "The cluster already exists"
 fi

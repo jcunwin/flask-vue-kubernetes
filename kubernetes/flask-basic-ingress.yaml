@@ -1,0 +1,9 @@
+# Based on hello-python-basic-ingress.yaml
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: flask-basic-ingress
+spec:
+  backend:
+    serviceName: flask
+    servicePort: 8080
