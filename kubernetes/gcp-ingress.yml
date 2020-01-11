@@ -1,0 +1,28 @@
+apiVersion: networking.k8s.io/v1beta1 # for versions before 1.14 use extensions/v1beta1
+kind: Ingress
+metadata:
+  name: gcp-ingress
+  annotations:
+#    nginx.ingress.kubernetes.io/ssl-redirect: "false"  
+#    nginx.ingress.kubernetes.io/rewrite-target: '/'
+#    kubernetes.io/ingress.class: nginx
+spec:
+  rules:
+  - host: gcp.hello.world
+  - http:
+      paths:
+ #     - path: /
+ #       backend:
+ #         serviceName: vue
+ #         servicePort: 8080
+ #     - path: /books/*
+      - backend:
+          serviceName: flask
+          servicePort: 8080
+        path: /books    # works for /books but not /books/ping
+#        path: /books/*    # works for /books but not /books/ping
+#        path: /books      # works for /books but not /books/ping
+#      - path: /another-hello
+#        backend:
+#          serviceName: hello-world
+#          servicePort: 60000

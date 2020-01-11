@@ -5,7 +5,15 @@ metadata:
   labels:
     service: flask
 spec:
-  type: LoadBalancer
+#  type: LoadBalancer 
+#        GCP creates a loadbalancer-controller for the NodePort service
+  type: NodePort   # GCP doesn't like a ClusterIP service behind ingress
+# https://kubernetes.io/docs/concepts/services-networking/service/
+# Unspecified type will create ClusterIP
+# ClusterIP: Exposes the Service on a cluster-internal IP. 
+# Choosing this value makes the Service only reachable from within the cluster. 
+# This is the default ServiceType.
+# Default (ClusterIP) works for minikube and microk8s
   selector:
     app: flask
   ports:

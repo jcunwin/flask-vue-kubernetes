@@ -22,7 +22,7 @@ then
     #gcloud container clusters create flask-vue-kubernetes --num-nodes 3
     #
     # --release-channel requires "beta" "rapid" uses kubernetes version 1.16.0-gke.20
-    gcloud beta container clusters create flask-vue-kubernetes --num-nodes 3 --release-channel rapid
+    gcloud beta container clusters create flask-vue-kubernetes --num-nodes 3 --release-channel rapid --enable-ip-alias
 
 else
     echo "The cluster already exists"

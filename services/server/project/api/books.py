@@ -29,6 +29,8 @@ def all_books():
 
 
 @books_blueprint.route('/books/ping', methods=['GET'])
+@books_blueprint.route('/healthz', methods=['GET'])
+@books_blueprint.route('/', methods=['GET'])
 def ping():
     return jsonify({
         'status': 'success',
